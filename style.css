@@ -1,0 +1,103 @@
+
+
+#dial {
+    height: 200px;
+    position: absolute;
+    top: calc(50% - 100px);
+    left: calc(50% - 100px);
+    animation: rmm 0.7s forwards
+}
+
+button {
+    background: #0000;
+    border-color: #0000;
+}
+
+#middlebutton {
+    position: absolute;
+    left: calc(50% - 30px);
+    top: calc(50% - 190px);
+    width: 60px;
+    height: 60px;
+}
+
+#rightbutton {
+    position: absolute;
+    top: calc(50% - 150px);
+    left: calc(50% + 80px);
+    width: 60px;
+    height: 60px;
+}
+
+#leftbutton {
+    position: absolute;
+    top: calc(50% - 150px);
+    left: calc(50% - 140px);
+    width: 60px;
+    height: 60px;
+}
+
+.dot {
+    height: 15px;
+    width: 15px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.unselected-dot {
+    background-color: #0000;
+    border: 1px solid #858585 ;
+}
+
+.selected-dot {
+    background-color: #c6831f;
+    border: 1px solid #c6831f;
+}
+
+/* Middle starting animation */
+@keyframes rmm {
+    from { transform: rotate(0turn); }
+    to { transform: rotate(0turn);}
+}
+
+/* Middle to Right */
+@keyframes rmr {
+    0% { transform: rotate(0turn); }
+    65% { transform: rotate(0.12turn); }
+    100% { transform: rotate(0.1turn); }
+}
+
+/* Middle to Left */
+@keyframes rml {
+    0% { transform: rotate(0turn); }
+    65% { transform: rotate(-0.12turn); }
+    100% { transform: rotate(-0.1turn); }
+}
+
+/* Left to Middle */
+@keyframes rlm {
+    0% { transform: rotate(-0.1turn); }
+    65% { transform: rotate(0.02turn); }
+    100% { transform: rotate(0turn); }
+}
+
+/* Right to Middle */
+@keyframes rrm {
+    0% { transform: rotate(0.1turn); }
+    65% { transform: rotate(-0.02turn); }
+    100% { transform: rotate(0turn); }
+}
+
+/* Right to Left */
+@keyframes rrl {
+    0% { transform: rotate(0.1turn); }
+    65% { transform: rotate(-0.14turn); }
+    100% { transform: rotate(-0.1turn); }
+}
+
+/* Left to Right */
+@keyframes rlr {
+    0% { transform: rotate(-0.1turn); }
+    65% { transform: rotate(0.14turn); }
+    100% { transform: rotate(0.1turn); }
+}
