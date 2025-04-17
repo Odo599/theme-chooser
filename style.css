@@ -1,23 +1,23 @@
 .dark-theme {
-    ---background: #000;
+    ---background: #171717;
     ---foreground: #FFF;
     ---foreground-filter: invert(95%) sepia(84%) saturate(0%) hue-rotate(187deg) brightness(107%) contrast(100%);;
 }
 
 .light-theme {
-    ---background: #FFF;
+    ---background: #dadada;
     ---foreground: #000;
     ---foreground-filter: invert(0%) sepia(0%) saturate(18%) hue-rotate(293deg) brightness(95%) contrast(105%);
 }
 
 .blue-theme {
-    ---background: #456;
+    ---background: #4e6275;
     ---foreground: #202c38;
     ---foreground-filter: invert(11%) sepia(14%) saturate(1490%) hue-rotate(168deg) brightness(104%) contrast(88%);
 }
 
 .universal {
-    ---selected-dot: #c6831f;
+    ---selected-dot: #fe9902;
 }
 
 body {

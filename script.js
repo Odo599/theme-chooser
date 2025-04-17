@@ -102,34 +102,38 @@ function textRandomiseEffect(label) {
 
 }
 
-setStyle("m")
+function init() {
+    setStyle("m")
 
-positionButtons()
-
-addEventListener("resize", (event) => {
     positionButtons()
-})
 
-// Detect Mouseover of Dark Button and Start Effect
-darkButton = document.getElementById("middlebutton")
-darkLabel = document.getElementById("dark-label")
+    addEventListener("resize", (event) => {
+        positionButtons()
+    })
 
-darkButton.addEventListener("mouseenter", (event) => {
-    textRandomiseEffect(darkLabel)
-})
+    // Detect Mouseover of Dark Button and Start Effect
+    darkButton = document.getElementById("middlebutton")
+    darkLabel = document.getElementById("dark-label")
 
-// Detect Mouseover of Light Button and Start Effect
-lightButton = document.getElementById("leftbutton")
-lightLabel = document.getElementById("light-label")
+    darkButton.addEventListener("mouseenter", (event) => {
+        textRandomiseEffect(darkLabel)
+    })
 
-lightButton.addEventListener("mouseenter", (event) => {
-    textRandomiseEffect(lightLabel)
-})
+    // Detect Mouseover of Light Button and Start Effect
+    lightButton = document.getElementById("leftbutton")
+    lightLabel = document.getElementById("light-label")
 
-// Detect Mouseover of Light Button and Start Effect
-oceanButton = document.getElementById("rightbutton")
-oceanLabel = document.getElementById("ocean-label")
+    lightButton.addEventListener("mouseenter", (event) => {
+        textRandomiseEffect(lightLabel)
+    })
 
-oceanButton.addEventListener("mouseenter", (event) => {
-    textRandomiseEffect(oceanLabel)
-})
+    // Detect Mouseover of Light Button and Start Effect
+    oceanButton = document.getElementById("rightbutton")
+    oceanLabel = document.getElementById("ocean-label")
+
+    oceanButton.addEventListener("mouseenter", (event) => {
+        textRandomiseEffect(oceanLabel)
+    })
+}
+
+init()
