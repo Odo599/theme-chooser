@@ -1,23 +1,31 @@
 <!DOCTYPE html>
 
 <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono&display=swap" rel="stylesheet">
+    
     <link rel="stylesheet" href="style.css">
 </head>
 
-<body id="body">
-    <img src="images/left.png" id="dial">
+<body id="body" class="blue-theme universal">
+    <div id="dial-div">
+        <img src="images/left.svg" id="dial">
 
-    <button onclick="rotate('l')" id="leftbutton">
-        <span class="dot unselected-dot" id="leftdot"></span>
-    </button>
+        <button onclick="rotate('l')" id="leftbutton">
+            <span class="dot unselected-dot" id="leftdot"></span>
+            <p class="theme-label space-mono-regular" id="light-label">LIGHT</p>
+        </button>
 
-    <button onclick="rotate('m')" id="middlebutton">
-        <span class="dot selected-dot" id="middledot"></span>
-    </button>
+        <button onclick="rotate('m')" id="middlebutton">
+            <span class="dot selected-dot" id="middledot"></span>
+            <p class="theme-label space-mono-regular" id="dark-label">DARK</p>
+        </button>
 
-    <button onclick="rotate('r')" id="rightbutton">
-        <span class="dot unselected-dot" id="rightdot"></span>
-    </button>
-
+        <button onclick="rotate('r')" id="rightbutton">
+            <span class="dot unselected-dot" id="rightdot"></span>
+            <p class="theme-label space-mono-regular" id="ocean-label">OCEAN</p>
+        </button>
+    </div>
     <script src="script.js"></script>
 </body>

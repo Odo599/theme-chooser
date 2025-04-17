@@ -1,11 +1,36 @@
+.dark-theme {
+    ---background: #000;
+    ---foreground: #FFF;
+    ---foreground-filter: invert(95%) sepia(84%) saturate(0%) hue-rotate(187deg) brightness(107%) contrast(100%);;
+}
 
+.light-theme {
+    ---background: #FFF;
+    ---foreground: #000;
+    ---foreground-filter: invert(0%) sepia(0%) saturate(18%) hue-rotate(293deg) brightness(95%) contrast(105%);
+}
+
+.blue-theme {
+    ---background: #456;
+    ---foreground: #202c38;
+    ---foreground-filter: invert(11%) sepia(14%) saturate(1490%) hue-rotate(168deg) brightness(104%) contrast(88%);
+}
+
+.universal {
+    ---selected-dot: #c6831f;
+}
+
+body {
+    background: var(---background);
+}
 
 #dial {
-    height: 200px;
+    height: 350px;
     position: absolute;
-    top: calc(50% - 100px);
-    left: calc(50% - 100px);
-    animation: rmm 0.7s forwards
+    top: calc(50% - 175px);
+    left: calc(50% - 175px);
+    animation: rmm 0.7s forwards;
+    filter: var(---foreground-filter)
 }
 
 button {
@@ -13,91 +38,97 @@ button {
     border-color: #0000;
 }
 
+/* Buttons */
 #middlebutton {
     position: absolute;
-    left: calc(50% - 30px);
-    top: calc(50% - 190px);
     width: 60px;
     height: 60px;
 }
 
 #rightbutton {
     position: absolute;
-    top: calc(50% - 150px);
-    left: calc(50% + 80px);
     width: 60px;
     height: 60px;
+    transform: rotate(0.1turn);
 }
 
 #leftbutton {
     position: absolute;
-    top: calc(50% - 150px);
-    left: calc(50% - 140px);
     width: 60px;
     height: 60px;
+    transform: rotate(-0.1turn);
 }
 
+/* Button Dot */
 .dot {
-    height: 15px;
-    width: 15px;
+    height: 10px;
+    width: 10px;
     border-radius: 50%;
     display: inline-block;
 }
 
+/* Dot Themes */
 .unselected-dot {
     background-color: #0000;
-    border: 1px solid #858585 ;
+    border: 1px solid var(---foreground) ;
 }
 
 .selected-dot {
-    background-color: #c6831f;
-    border: 1px solid #c6831f;
+    background-color: var(---selected-dot);
+    border: 1px solid var(---selected-dot);
 }
 
-/* Middle starting animation */
+/* Text Themes */
+.theme-label {
+    color: var(---foreground);
+    margin: 0;
+}
+
+/* Dial Animations */
 @keyframes rmm {
     from { transform: rotate(0turn); }
     to { transform: rotate(0turn);}
 }
 
-/* Middle to Right */
 @keyframes rmr {
     0% { transform: rotate(0turn); }
     65% { transform: rotate(0.12turn); }
     100% { transform: rotate(0.1turn); }
 }
 
-/* Middle to Left */
 @keyframes rml {
     0% { transform: rotate(0turn); }
     65% { transform: rotate(-0.12turn); }
-    100% { transform: rotate(-0.1turn); }
+    100% { transform: rotate(-0.1turn ); }
 }
 
-/* Left to Middle */
 @keyframes rlm {
     0% { transform: rotate(-0.1turn); }
     65% { transform: rotate(0.02turn); }
     100% { transform: rotate(0turn); }
 }
 
-/* Right to Middle */
 @keyframes rrm {
     0% { transform: rotate(0.1turn); }
     65% { transform: rotate(-0.02turn); }
     100% { transform: rotate(0turn); }
 }
 
-/* Right to Left */
 @keyframes rrl {
     0% { transform: rotate(0.1turn); }
     65% { transform: rotate(-0.14turn); }
     100% { transform: rotate(-0.1turn); }
 }
 
-/* Left to Right */
 @keyframes rlr {
     0% { transform: rotate(-0.1turn); }
     65% { transform: rotate(0.14turn); }
     100% { transform: rotate(0.1turn); }
+}
+
+/* Fonts */
+.space-mono-regular {
+    font-family: "Space Mono", monospace;
+    font-weight: 400;
+    font-style: normal;
 }
