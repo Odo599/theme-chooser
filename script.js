@@ -102,13 +102,34 @@ function textRandomiseEffect(label) {
 
 }
 
+function setupDots() {
+    dotsDiv = document.getElementById("dots")
+    dotsDiv.childNodes = []
+
+    while (true) {
+        dotTemplate = document.createElement("span")
+        dotTemplate.classList.add("background-dot")
+        newDot = dotsDiv.appendChild(dotTemplate)
+        
+        yPos = newDot.getBoundingClientRect().y
+        windowHeight = window.innerHeight
+
+        if (yPos > windowHeight) {
+            console.log("Broken")
+            break
+        }
+    }
+}
+
 function init() {
     setStyle("m")
 
     positionButtons()
+    setupDots()
 
     addEventListener("resize", (event) => {
         positionButtons()
+        setupDots()
     })
 
     // Detect Mouseover of Dark Button and Start Effect

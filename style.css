@@ -84,6 +84,27 @@ button {
     margin: 0;
 }
 
+#dots {
+    position: absolute;
+    overflow: hidden;
+    top: calc(100% - 205px);
+    left: 10px;
+    height: calc(100% - (100% - 205px));
+    width: calc(100% - 10px);
+}
+
+.background-dot {
+    background-color: var(---foreground);
+    height: 4px;
+    width: 4px;
+    display: inline-block;
+    border-radius: 50%;
+    margin-left: 8px;
+    margin-right: 8px;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
 /* Dial Animations */
 @keyframes rmm {
     from { transform: rotate(0turn); }
