@@ -102,11 +102,10 @@ function textRandomiseEffect(label) {
 
 }
 
-function setupDots() {
+async function setupDots() {
     dotsDiv = document.getElementById("dots")
     dotsDiv.childNodes = []
-
-    divMap = new Map()
+    dotsDiv.style.gridTemplateColumns = `repeat(${Math.floor(window.innerWidth / 10)}, auto)`
 
     while (true) {
         dotTemplate = document.createElement("span")
@@ -122,6 +121,9 @@ function setupDots() {
         }
         
     }
+
+    cleanDots()
+    styleDots()
 }
 
 function getDotRows() {
@@ -172,7 +174,6 @@ function cleanDots() {
 }
 
 function styleDots() {
-    cleanDots()
     console.log("Styling Dots")
     dotRows = getDotRows()
     for (let rowIndex = 0; rowIndex < dotRows.length; rowIndex++) {
@@ -188,13 +189,11 @@ function init() {
     setStyle("m")
 
     positionButtons()
-    setupDots()
-    styleDots()
+    setTimeout(setupDots)
 
     addEventListener("resize", (event) => {
         positionButtons()
-        setupDots()
-        styleDots()
+        setTimeout(setupDots)
     })
 
     // Detect Mouseover of Dark Button and Start Effect

@@ -91,21 +91,19 @@ button {
     overflow: hidden;
     top: calc(100% - 205px);
     left: 10px;
-    height: calc(100% - (100% - 205px));
-    width: calc(100% - 10px);
+    height: calc(100% - (100% - 195px));
+    width: calc(100% - 20px);
+    display: grid;
 }
 
 /* Dot (Matrix) */
 .background-dot {
     background-color: var(---foreground);
-    height: 3px;
-    width: 3px;
-    display: inline-block;
+    height: 2px;
+    width: 2px;
+
     border-radius: 50%;
-    margin-left: 8px;
-    margin-right: 8px;
-    margin-top: 0;
-    margin-bottom: 0;
+    margin: 4px;
 }
 
 /* Dial Animations */
