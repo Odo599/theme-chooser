@@ -106,6 +106,8 @@ function setupDots() {
     dotsDiv = document.getElementById("dots")
     dotsDiv.childNodes = []
 
+    divMap = new Map()
+
     while (true) {
         dotTemplate = document.createElement("span")
         dotTemplate.classList.add("background-dot")
@@ -113,12 +115,73 @@ function setupDots() {
         
         yPos = newDot.getBoundingClientRect().y
         windowHeight = window.innerHeight
-
+        
         if (yPos > windowHeight) {
-            console.log("Broken")
+            newDot.remove()
             break
         }
+        
     }
+}
+
+function getDotRows() {
+    const container = document.getElementById("dots")
+    const dots = Array.from(container.children)
+
+    const positions = dots.map(dot => ({
+        element: dot,
+        rect: dot.getBoundingClientRect()
+    }))
+
+    positions.sort((a,b) => a.rect.top - b.rect.top)
+
+    const rows = []
+    const rowThreshold = 5
+
+    for (const { element, rect } of positions) {
+        let row = rows.find(r => Math.abs(r[0].rect.top - rect.top) < rowThreshold)
+
+        if (!row) {
+            row = []
+            rows.push(row)
+        }
+
+        row.push({ element, rect })
+    }
+
+    const sortedGrid = rows.map(row => 
+        row.sort((a,b) => a.rect.left - b.rect.left).map(item => item.element)
+    )
+
+    return sortedGrid
+}
+
+function cleanDots() {
+    let dots = document.getElementById("dots")
+    let toRemove = []
+    for (i = 0; i < dots.children.length; i++) {
+        let dot = dots.children[i]
+        if (dot.getBoundingClientRect().y > window.innerHeight) {
+            toRemove.push(dot)
+        }
+    }
+
+    for (i = 0; i < toRemove.length; i++) {
+        toRemove[i].remove()
+    }
+}
+
+function styleDots() {
+    cleanDots()
+    console.log("Styling Dots")
+    dotRows = getDotRows()
+    for (let rowIndex = 0; rowIndex < dotRows.length; rowIndex++) {
+        let opacity = (rowIndex + 1) / dotRows.length * 100
+        
+        for (let i = 0; i < dotRows[rowIndex].length; i++) {
+            dotRows[rowIndex][i].style.filter = `opacity(${opacity}%)`
+        }
+    } 
 }
 
 function init() {
@@ -126,10 +189,12 @@ function init() {
 
     positionButtons()
     setupDots()
+    styleDots()
 
     addEventListener("resize", (event) => {
         positionButtons()
         setupDots()
+        styleDots()
     })
 
     // Detect Mouseover of Dark Button and Start Effect
