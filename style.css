@@ -1,19 +1,28 @@
 .dark-theme {
     ---background: #171717;
     ---foreground: #FFF;
-    ---foreground-filter: invert(95%) sepia(84%) saturate(0%) hue-rotate(187deg) brightness(107%) contrast(100%);;
+    ---foreground-non-color: #FFF;
+    ---background-non-color: #171717;
+    ---foreground-filter: invert(95%) sepia(84%) saturate(0%) hue-rotate(187deg) brightness(107%) contrast(100%);
+    ---background-filter-non-color: ;
 }
 
 .light-theme {
     ---background: #dadada;
     ---foreground: #000;
+    ---foreground-non-color: #171717;
+    ---background-non-color: #FFF;
     ---foreground-filter: invert(0%) sepia(0%) saturate(18%) hue-rotate(293deg) brightness(95%) contrast(105%);
+    ---background-filter-non-color: invert(100%) sepia(0%) saturate(7435%) hue-rotate(102deg) brightness(120%) contrast(100%);
 }
 
 .blue-theme {
     ---background: #4e6275;
     ---foreground: #202c38;
+    ---foreground-non-color: #FFF;
+    ---background-non-color: #171717;
     ---foreground-filter: invert(11%) sepia(14%) saturate(1490%) hue-rotate(168deg) brightness(104%) contrast(88%);
+    ---background-filter-non-color:
 }
 
 .universal {
@@ -79,7 +88,7 @@ button {
     border: 1px solid var(---selected-dot);
 }
 
-/* Text Themes */
+/* Label Text */
 .theme-label {
     color: var(---foreground);
     margin: 0;
@@ -91,7 +100,7 @@ button {
     overflow: hidden;
     top: calc(100% - 205px);
     left: 10px;
-    height: calc(100% - (100% - 195px));
+    height: calc(195px);
     width: calc(100% - 20px);
     display: grid;
 }
@@ -104,6 +113,68 @@ button {
 
     border-radius: 50%;
     margin: 4px;
+}
+
+/* Text Placed On Background Colour */
+.fg-text {
+    color: var(---foreground);
+    font-size: 0.8em;
+}
+
+#confirm-div {
+    position: absolute;
+    width: 100%;
+    top:75%;
+}
+
+#choose-text {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+#confirm-button {
+    position: relative;
+    background: var(---foreground-non-color);
+    width: 120px;
+    height: 35px;
+    border-radius: 17.5px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+    
+}
+
+#confirm-button > #plus-button {
+    position: relative;
+    float: right;
+    height: 28px;
+    width: 28px;
+    margin: 3.5px;
+    border-radius: 50%;
+    background-color: var(---selected-dot);
+}
+
+#confirm-button > #label {
+    position: absolute;
+    top: 50%;
+    left: calc(50% - 5px);
+    display: inline-flex;
+    font-size: 0.9em;
+    width: 85px;
+    margin: 0;
+    transform: translate(-50%, -50%);
+    color: var(---background-non-color);
+}
+
+#confirm-button > #plus-button > img {
+    width: 10px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    filter: var(---background-filter-non-color);
 }
 
 /* Dial Animations */
@@ -146,6 +217,31 @@ button {
     0% { transform: rotate(-0.1turn); }
     65% { transform: rotate(0.14turn); }
     100% { transform: rotate(0.1turn); }
+}
+
+/* Plus Symbol Rotation Animation */
+@keyframes plusRotateFoward {
+    from { transform: rotate(0); }
+    85% { transform: rotate(100deg); }
+    to { transform: rotate(90deg); }
+}
+
+@keyframes plusRotateBackward {
+    from { transform: rotate(90deg); }
+    85% { transform: rotate(-10deg); }
+    to { transform: rotate(0); }
+}
+
+.rotateForward {
+    animation: plusRotateFoward;
+    animation-duration: 0.3s;
+    animation-fill-mode: forwards;
+}
+
+.rotateBackward {
+    animation: plusRotateBackward;
+    animation-duration: 0.3s;
+    animation-fill-mode: forwards;
 }
 
 /* Fonts */

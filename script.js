@@ -177,7 +177,7 @@ function styleDots() {
     console.log("Styling Dots")
     dotRows = getDotRows()
     for (let rowIndex = 0; rowIndex < dotRows.length; rowIndex++) {
-        let opacity = (rowIndex + 1) / dotRows.length * 100
+        let opacity = (rowIndex + 1) / dotRows.length * 75
         
         for (let i = 0; i < dotRows[rowIndex].length; i++) {
             dotRows[rowIndex][i].style.filter = `opacity(${opacity}%)`
@@ -185,7 +185,9 @@ function styleDots() {
     } 
 }
 
-function init() {
+
+
+async function init() {
     setStyle("m")
 
     positionButtons()
@@ -218,6 +220,26 @@ function init() {
 
     oceanButton.addEventListener("mouseenter", (event) => {
         textRandomiseEffect(oceanLabel)
+    })
+
+    // Detect Mouuseover of Set Mood Button and Start Effect
+    moodButton = document.getElementById("confirm-button")
+    moodLabel = moodButton.children[0]
+    moodPlus = moodButton.children[1]
+
+    moodButton.addEventListener("mouseenter", (event) => {
+        textRandomiseEffect(moodLabel)
+        moodPlus.classList.add("rotateForward")
+        moodPlus.addEventListener("animationend", () => {
+            moodPlus.classList.remove("rotateForward")
+        })
+    })
+
+    moodButton.addEventListener("mouseleave", (event) => {
+        moodPlus.classList.add("rotateBackward")
+        moodPlus.addEventListener("animationend", () => {
+            moodPlus.classList.remove("rotateBackward")
+        })
     })
 }
 

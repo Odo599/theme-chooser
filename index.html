@@ -12,8 +12,10 @@
 </head>
 
 <body id="body" class="dark-theme universal">
+    <span id="dots"></span>
+
     <div id="dial-div">
-        <img src="images/left.svg" id="dial">
+        <img src="images/dial.svg" id="dial">
 
         <button onclick="rotate('l')" id="leftbutton">
             <span class="dot unselected-dot" id="leftdot"></span>
@@ -29,8 +31,20 @@
             <span class="dot unselected-dot" id="rightdot"></span>
             <p class="theme-label space-mono-regular" id="ocean-label">OCEAN</p>
         </button>
-
-        <span id="dots"></span>
+        
     </div>
+    <div id="confirm-div">
+        <p class="fg-text space-mono-regular" id="choose-text">
+            SELECT THE MOOD THAT MATCHES YOUR VIBE
+        </p>
+
+        <span id="confirm-button">
+            <p id="label" class="space-mono-regular">SET MOOD</p>
+            <span id="plus-button">
+                <img src="images/plus.svg">
+            </span>
+        </span>
+    </div>
+    
     <script src="script.js"></script>
 </body>
